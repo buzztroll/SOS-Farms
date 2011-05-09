@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html> 
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>inventoryedit</title>
+<meta name="GENERATOR" content="Virtual Mechanics SiteSpinner V2 270f - Trial Only">
+<meta http-equiv="imagetoolbar" content="false">
+
+<style type="text/css">
+<!--
+.fsx01 {font-size: 11px;}
+.fsx02 {font-size: 12px;}
+.fsx03 {font-size: 13px;}
+.fsx04 {font-size: 15px;}
+.fsx05 {font-size: 16px;}
+.fsx06 {font-size: 19px;}
+.fsx07 {font-size: 21px;}
+.fsx08 {font-size: 24px;}
+.fsx09 {font-size: 27px;}
+.fsx10 {font-size: 29px;}
+.fsx11 {font-size: 32px;}
+.fsx12 {font-size: 35px;}
+.fsx13 {font-size: 37px;}
+.fsx14 {font-size: 48px;}
+.fsx15 {font-size: 64px;}
+.fsx16 {font-size: 96px;}
+.txdec {text-decoration: none;}
+
+input,textarea,select {color:#000000;font-family:'Times New Roman';font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;}
+.dfltt {font-family:'Times New Roman';font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;text-align:left;color:#000000;}
+.dfltc {font-family:'Times New Roman';font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;text-align:left;color:#000000;}
+body {margin:0;height:100%;width:100%;}
+-->
+</style>
+</head> 
+
+<body bgcolor="#f7c74a" alink="#ff0000" link="#0000ff" vlink="#800080" >
+
+<div id="Oobj75" style="position:absolute;z-index:1;visibility:visible; left:-6px;top:-2px;width:250px;height:648px;">
+<img name="Ggeo82" src="./image/obj75geo82pg9p18.png" alt="" border = "0"  width="250" height="648"></div>
+
+<div id="Ol1121" style="position:absolute;z-index:2;visibility:visible; left:30px;top:110px;width:150px;height:29px;">
+<a href="invoice.htm" title="Home"><font face="Georgia" class="fsx06" color="#ffffff"><a href="http://www.sosfarms.com"><font color="#ffffff">Home</font></a><br></font></a>
+</div>
+
+<div id="Ol1144" style="position:absolute;z-index:3;visibility:visible; left:30px;top:140px;width:150px;height:29px;">
+<a href="invoice.htm" title="Home"><font face="Georgia" class="fsx06" color="#ffffff"><a href="/users"><font color="#ffffff">Users</font></a><br></font></a>
+</div>
+
+<div id="Ol1145" style="position:absolute;z-index:4;visibility:visible; left:30px;top:170px;width:150px;height:29px;">
+<a href="invoice.htm" title="Home"><font face="Georgia" class="fsx06" color="#ffffff"><a href="/inventory"><font color="#ffffff">Inventory</font></a><br></font></a>
+</div>
+
+<div id="Ol1146" style="position:absolute;z-index:5;visibility:visible; left:30px;top:200px;width:150px;height:29px;">
+<a href="invoice.htm" title="Home"><font face="Georgia" class="fsx06" color="#ffffff"><a href="/harvest"><font color="#ffffff">Harvest</font></a><br></font></a>
+</div>
+
+<div id="Ol1147" style="position:absolute;z-index:6;visibility:visible; left:30px;top:230px;width:150px;height:29px;">
+<a href="invoice.htm" title="Home"><font face="Georgia" class="fsx06" color="#ffffff"><a href="/invoice"><font color="#ffffff">Invoice</font></a><br></font></a>
+</div>
+
+<div id="Ol1148" style="position:absolute;z-index:7;visibility:visible; left:30px;top:290px;width:150px;height:29px;">
+<a href="invoice.htm" title="Home"><font face="Georgia" class="fsx06" color="#ffffff"><a href="{{logout_url}}"><font color="#ffffff">Logout</font></a><br></font></a>
+</div>
+
+<div id="Oobj74" style="position:absolute;z-index:8;visibility:visible; left:290px;top:30px;width:389px;height:46px;">
+<div id="Ggeo73" class="dfltt">
+<font face="Georgia" class="fsx11" color="#321e13">Edit Inventory Item<br></font></div>
+</div>
+
+<form id="Oinventoryform" name="inventoryform" action="/inventory" method="POST" enctype="application/x-www-form-urlencoded">
+<input type="submit" id="Oobj77" name="button" value="Save" style="position:absolute;z-index:9;left:378px;top:217px;width:91px;height:30px;">
+<input type="text" id="Oobj78" name="item" value="{{item.name}}" style="position:absolute;z-index:10;left:390px;top:120px;width:190px;height:20px;">
+<input type="text" id="Oobj79" name="anotation" value="{{item.anotation}}" style="position:absolute;z-index:11;left:390px;top:150px;width:190px;height:20px;">
+<input type="text" id="Oobj82" name="quantity" value="{{item.quantity}}" style="position:absolute;z-index:12;left:390px;top:180px;width:70px;height:20px;">
+<input type="text" id="Oobj91" name="cost" value="{{item.cost}}" style="position:absolute;z-index:17;left:512px;top:179px;width:60px;height:20px;">
+<input type="text" id="Oobj119" name="weekof" value="{{harvest_date}}" readonly style="position:absolute;z-index:18;left:390px;top:90px;width:100px;height:20px;">
+<input type="text" id="Oobj178" name="id" value="{{item.id}}" readonly style="position:absolute;z-index:23;left:250px;top:570px;width:100px;height:20px;">
+</form>
+
+<div id="Oobj83" style="position:absolute;z-index:13;visibility:visible; left:290px;top:179px;width:83px;height:24px;">
+<div id="Ggeo62" class="dfltt">
+<font face="Arial" class="fsx05" color="#321e13">Quantity:<br></font></div>
+</div>
+
+<div id="Oobj84" style="position:absolute;z-index:14;visibility:visible; left:289px;top:120px;width:99px;height:24px;">
+<div id="Ggeo63" class="dfltt">
+<font face="Arial" class="fsx05" color="#321e13">Item:<br></font></div>
+</div>
+
+<div id="Oobj85" style="position:absolute;z-index:15;visibility:visible; left:289px;top:149px;width:100px;height:24px;">
+<div id="Ggeo84" class="dfltt">
+<font face="Arial" class="fsx05" color="#321e13">Anonotation:<br></font></div>
+</div>
+
+<div id="Oobj90" style="position:absolute;z-index:16;visibility:visible; left:460px;top:180px;width:49px;height:24px;">
+<div id="Ggeo89" class="dfltt">
+<font face="Arial" class="fsx05" color="#321e13">Price:<br></font></div>
+</div>
+
+<div id="Oobj116" style="position:absolute;z-index:19;visibility:visible; left:289px;top:91px;width:99px;height:24px;">
+<div id="Ggeo122" class="dfltt">
+<font face="Arial" class="fsx05" color="#321e13">Harvest Date:<br></font></div>
+</div>
+
+<div id="Otit50" style="position:absolute;z-index:20;visibility:visible; left:3px;top:14px;width:235px;height:73px;">
+<img name="Ggeo45" src="./geometry/tit50geo45pg9p18.png" alt="" border = "0"  width="235" height="73"></div>
+
+<div id="Oobj107" style="position:absolute;z-index:21;visibility:visible; left:60px;top:81px;width:110px;height:29px;">
+<div id="Ggeo112" class="dfltt">
+<font face="Georgia" class="fsx06" color="#ffffff">Admin<br></font></div>
+</div>
+
+<div id="Ol11203" style="position:absolute;z-index:22;visibility:visible; left:30px;top:260px;width:150px;height:29px;">
+<a href="invoice.htm" title="Home"><font face="Georgia" class="fsx06" color="#ffffff"><a href="/waiting"><font color="#ffffff">Waiting</font></a><br></font></a>
+</div>
+
+
+</body> 
+</html> 

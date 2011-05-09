@@ -1,0 +1,18 @@
+<html>
+ <head>
+    <title>SOS Farms Spreedsheet Import</title>
+  </head>
+ <body>
+
+    <h2>Invoice {{harvest_date}}</h2>
+    <PRE>
+Name, Item, Qty, Cost, Charge
+{% for upo in user_pos %}
+    {% for uc in upo.user_choices %}
+{{ upo.user_info.firstname }} {{ upo.user_info.lastname }}, {{uc.item.name}}, {{uc.quantity}}, {{uc.item.cost}}, {{uc.charge}}
+    {% endfor %}
+{% endfor %}
+    </PRE>
+  </body>
+</html>
+

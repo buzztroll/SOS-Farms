@@ -1,0 +1,18 @@
+<html>
+ <head>
+    <title>SOS Farms Spreedsheet Import</title>
+  </head>
+
+ <body>
+    <h2>Inventory {{harvest_date}}</h2>
+    <PRE>
+User{% for h in list_header %}, {{ h }}{% endfor %}
+{% for upo in user_pos %}
+{{ upo.user_info.firstname }} {{ upo.user_info.lastname }}{% for q in upo.quat_list %}, {{ q }} {% endfor %}
+{% endfor %}
+Totals{% for t in totals %}, {{ t }}{% endfor %}
+
+    </PRE>
+  </body>
+</html>
+

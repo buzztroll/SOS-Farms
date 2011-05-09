@@ -1,0 +1,17 @@
+<html>
+ <head>
+    <title>SOS Farms Spreedsheet Import</title>
+  </head>
+
+ <body>
+    <PRE>
+
+First Name,Last Name,Email,Phone,Address,City,Zip
+{% for user in users %}
+{{user.firstname}},{{user.lastname}},{{user.email}},{{user.phone}},{{user.address}},{{user.city}},{{user.zip}}
+{% endfor %}
+
+    </PRE>
+  </body>
+</html>
+

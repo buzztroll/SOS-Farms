@@ -1,0 +1,17 @@
+<html>
+ <head>
+    <title>SOS Farms Spreedsheet Import</title>
+  </head>
+
+    <h2>Inventory {{harvest_date}}</h2>
+    <PRE>
+
+Item, Qty, Cost, Annotation
+{% for item in items %}
+{{ item.name }}, {{ item.quantity }}, {{ item.cost }}, {{ item.anotation }}
+{% endfor %}
+    </PRE>
+ <body>
+  </body>
+</html>
+

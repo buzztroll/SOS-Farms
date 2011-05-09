@@ -1,0 +1,75 @@
+<html>
+ <head>
+    <title>SOS Farms Invoice Printable</title>
+
+<style type="text/css">
+
+.print-table
+{
+  padding: 5;
+  margin: 1;
+  border-collapse: collapse;
+  border: 2px solid #333;
+  font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+  font-size: 1.0em;
+  color: #000000;
+}
+
+.print-table th, .print-table td
+{
+  border: 1px dotted #666;
+  padding: 0.5em;
+  text-align: left;
+  color: #000000;
+}
+
+-->
+</style>
+
+  </head>
+
+ <body>
+
+{% for upo in user_pos %}
+<h3>{{ upo.user_info.firstname }} {{ upo.user_info.lastname }}</h3>
+
+    <table border="1" class="print-table">
+    <tr>
+    <th>Item</th>
+    <th>Quantity</th>
+    <th>Cost</th>
+    <th>Charge</th>
+    {% for uc in upo.user_choices %}
+       <tr>
+            {% if uc.item %}
+            <td>{{uc.item.name}}</td>
+            <td>{{uc.quantity}}</td>
+            <td>{{uc.item.cost}}</td>
+            <td>{{uc.charge}}</td>
+            {%else%}
+            <td>DELETED ITEM</td>
+            <td>0</td>
+            <td>0.00</td>
+            <td>0.00</td>
+            {%endif%}
+
+        </tr>
+
+    {% endfor %}
+    <tr>
+        <td>Subtotal</td><td></td><td></td><td>{{upo.sub_total_charge_str}}</td>
+    </tr>
+    <tr>
+        <td>Tax</td><td></td><td></td><td>{{upo.tax_str}}</td>
+    </tr>
+    <tr>
+        <td>Total</td><td></td><td></td><td>{{upo.total_charge_str}}</td>
+    </tr>
+    </table>
+
+{% endfor %}
+
+
+  </body>
+</html>
+

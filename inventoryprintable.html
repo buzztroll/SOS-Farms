@@ -1,0 +1,62 @@
+<html>
+ <head>
+    <title>SOS Farms Inventory Printable</title>
+
+<style type="text/css">
+
+.print-table
+{
+  padding: 5;
+  margin: 1;
+  border-collapse: collapse;
+  border: 2px solid #333;
+  font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+  font-size: 1.0em;
+  color: #000000;
+}
+
+.print-table th, .print-table td
+{
+  border: 1px dotted #666;
+  padding: 0.5em;
+  text-align: left;
+  color: #000000;
+}
+
+-->
+</style>
+
+
+  </head>
+
+    <h2>Inventory {{harvest_date}}</h2>
+        <table border="1" class="print-table">
+        <tr>
+            <th>Item</th>
+            <th>Qty</th>
+            <th>Cost</th>
+            <th>Anotation</th>
+        </tr>
+
+        {% for item in items %}
+        <tr>
+            <td>
+                {{ item.name }}
+            </td>
+            <td>
+                {{ item.quantity }}
+            </td>
+            <td>
+                {{ item.cost }}
+            </td>
+            <td>
+                {{ item.anotation }}
+            </td>
+        </tr>
+        {% endfor %}
+        </table>
+
+ <body>
+  </body>
+</html>
+

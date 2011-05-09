@@ -1,0 +1,75 @@
+<html>
+ <head>
+    <title>SOS Farms Users Printable</title>
+
+<style type="text/css">
+
+.sos-table
+{
+  padding: 5;
+  margin: 1;
+  border-collapse: collapse;
+  border: 2px solid #333;
+  font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+  font-size: 1.0em;
+  color: #000000;
+}
+
+.sos-table th, .sos-table td
+{
+  border: 1px dotted #666;
+  padding: 0.5em;
+  text-align: left;
+  color: #000000;
+}
+
+-->
+</style>
+
+
+  </head>
+
+    <PRE>
+
+       <table border="2" class="sos-table">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>Zip</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>
+                {{user.firstname}}
+            </td>
+            <td>
+               {{user.lastname}}
+            </td>
+            <td>
+                {{user.email}}
+            </td>
+            <td>
+                {{user.phone}}
+            </td>
+            <td>
+                {{user.address}}
+            </td>
+            <td>
+                {{user.city}}
+            </td>
+            <td>
+                {{user.zip}}
+            </td>
+        </tr>
+        {% endfor %}
+        </table>
+
+    </PRE>
+ <body>
+  </body>
+</html>
+
