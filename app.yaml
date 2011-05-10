@@ -1,0 +1,21 @@
+application: sosfarmskauai
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+
+- url: /image
+  static_dir: image
+
+- url: /geometry
+  static_dir: geometry
+
+- url: /register
+  script: sosfarms.py
+
+- url: /.*
+  script: sosfarms.py
+  login: required
+
+

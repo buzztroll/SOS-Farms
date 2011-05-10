@@ -1,0 +1,20 @@
+.sos-table
+{
+  padding: 5;
+  margin: 1;
+  border-collapse: collapse;
+  border: 2px solid #333;
+  font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+  font-size: 0.9em;
+  color: #321e13;
+}
+
+.sos-table th, .sos-table td
+{
+  border: 1px dotted #666;
+  padding: 0.5em;
+  text-align: left;
+  color: #321e13;
+}
+
+-->

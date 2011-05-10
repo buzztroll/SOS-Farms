@@ -1,0 +1,30 @@
+        <table border="1" class="sos-table">
+        <tr>
+            <th>Item</th>
+            <th>Qty</th>
+            <th>Cost</th>
+            <th>Anotation</th>
+            <th>Action</th>
+        </tr>
+
+        {% for item in items %}
+        <tr>
+            <td>
+                {{ item.name }}
+            </td>
+            <td>
+                {{ item.quantity }}
+            </td>
+            <td>
+                {{ item.cost }}
+            </td>
+            <td>
+                {{ item.anotation }}
+            </td>
+            <td>
+                <input type="checkbox" name="{{item.id}}"></input>
+            </td>
+        </tr>
+        {% endfor %}
+        </table>
+

@@ -1,0 +1,29 @@
+ <table border="1" class="sos-table">
+
+        <tr>
+        <th>User</th>
+            {% for h in list_header %}
+                <th> {{ h.name }}</th>
+            {% endfor %}
+        <th>Total Charge</th>
+        </tr>
+
+        {% for upo in user_pos %}
+        <tr>
+            <td>{{ upo.user_info.firstname }} {{ upo.user_info.lastname }}</td>
+                {% for q in upo.quat_list %}
+                    <td>{{ q }}</td>
+                {% endfor %}
+            <td>{{upo.total_charge_str}}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td>Totals</td>
+           {% for t in totals %}
+               <td>{{ t }}</td>
+           {% endfor %}
+            <td>{{total_collect}}</td>
+        </tr>
+
+        </table>
+

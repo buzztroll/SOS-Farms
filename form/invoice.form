@@ -1,0 +1,37 @@
+{% for upo in user_pos %}
+<h3>Invoice for: {{ upo.user_info.firstname }} {{ upo.user_info.lastname }}</h3>
+
+    <table border="1" class="sos-table">
+    <tr>
+    <th>Item</th>
+    <th>Quantity</th>
+    <th>Cost</th>
+    <th>Charge</th>
+    {% for uc in upo.user_choices %}
+       <tr>
+            {% if uc.item %}
+            <td>{{uc.item.name}}</td>
+            <td>{{uc.quantity}}</td>
+            <td>{{uc.item.cost}}</td>
+            <td>{{uc.charge}}</td>
+            {%else%}
+            <td>DELETED ITEM</td>
+            <td>0</td>
+            <td>0.00</td>
+            <td>0.00</td>
+            {%endif%}
+
+        </tr>
+    {% endfor %}
+    <tr>
+        <td>Subtotal</td><td></td><td></td><td>{{upo.sub_total_charge_str}}</td>
+    </tr>
+    <tr>
+        <td>Tax</td><td></td><td></td><td>{{upo.tax_str}}</td>
+    </tr>
+    <tr>
+        <td>Total</td><td></td><td></td><td>{{upo.total_charge_str}}</td>
+    </tr>
+    </table>
+ 
+{% endfor %}

@@ -1,0 +1,7 @@
+    4013    4064 Ka'ahumanu Place   2009-08-26 17:44:25.855516  angelinn@earthlink.net  Gail    Spicuzza        96722
+    4014    4150 Momi St    2009-08-26 17:54:01.440278  sosfarminfo@yahoo.com   Kelly   Sato        96754
+    4018    4139 Kilauea Road Unit #1   2009-08-26 21:15:42.384952  markeetasmith@hotmail.com   Markeeta    Smith   808-651-7695    96754
+    4026    3784 Mili Makani Place  2009-08-27 22:02:00.966947  strombeck-kauai@hawaii.rr.com   Lowell  Strombeck   826-1928    96722
+    5011    4150 Momi St    2009-08-26 17:46:31.336049  hillbillyhulagirl@hotmail.com   Kelly   Sato        96754
+    5015    4716 Emmalani Drive     2009-08-26 18:44:19.128004  kpconery@gmail.com  Kathy   Conery  808-635-0794    96722
+    5016    4139 Kilauea    2009-08-26 21:15:13.610791  markeetasmith@hotmail.com   Markeeta    Smith   808-651-7695 

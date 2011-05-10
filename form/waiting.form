@@ -1,0 +1,41 @@
+        <table border="2" class="sos-table">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>Zip</th>
+            <th>Action</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>
+                {{user.firstname}}
+            </td>
+            <td>
+               {{user.lastname}}
+            </td>
+            <td>
+                {{user.email}}
+            </td>
+            <td>
+                {{user.phone}}
+            </td>
+            <td>
+                {{user.address}}
+            </td>
+            <td>
+                {{user.city}}
+            </td>
+            <td>
+                {{user.zip}}
+            </td>
+            <td>
+                <input type="checkbox" name="{{user.id}}"></input>
+            </td>
+        </tr>
+        {% endfor %}
+        </table>
+

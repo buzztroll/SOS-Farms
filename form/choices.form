@@ -1,0 +1,52 @@
+    <form action="/choices" method="post">
+        <table class="sos-table">
+        <tr><th>Item</th>
+            <th>Anotation</th>
+            <th>Available</th>
+            <th>Cost</th>
+            <th>Qty</th>
+            <th>Charge</th>
+        </tr>
+        {% for choice in choices %}
+        <tr>
+            <td>{{ choice.item.name }}</td>
+            <td>{{ choice.item.anotation }}</td>
+            <td>{{ choice.item.remaining }}</td>
+            <td>{{ choice.item.cost }}</td>
+            <td>
+                <input type="text" name="{{choice.item.id}}" size="3" value="{{choice.quantity }}"></input>
+            </td>
+            <td>{{ choice.charge }}</td>
+        </tr>
+        {% endfor %}
+            <tr>
+                <td>Subtotal</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{sub_total_charge}}</td>
+            </tr>
+            <tr>
+                <td>Tax</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{tax}}</td>
+            </tr>
+            <tr>
+                <td>Total</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{final_total_charge}}</td>
+            </tr>
+        </table>
+
+      <hr>
+      <input type="submit" value="Purchase" name="button">
+      <input type="submit" value="Calculate" name="button">
+
+    </form>
