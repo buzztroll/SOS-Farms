@@ -11,10 +11,12 @@ from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext import db
 from google.appengine.api import mail
-import uuid
 
 def sos_get_tax_rate():
     return 0.0416
+
+class Harvest(db.Model):
+    date = db.DateTimeProperty(auto_now_add=False)
 
 class UsersData(db.Model):
     email = db.StringProperty(multiline=False, required=True)
@@ -42,7 +44,6 @@ class InventoryList(db.Model):
     item_count = db.IntegerProperty()
     locked = db.IntegerProperty()
     id = db.StringProperty(multiline=False)
-    
 
 class Item(db.Model):
     name = db.StringProperty(multiline=False)

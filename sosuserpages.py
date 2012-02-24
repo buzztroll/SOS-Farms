@@ -1,30 +1,20 @@
 import os
 from google.appengine.ext.webapp import template
-import datetime
-import time
-from datetime import date
 from datetime import datetime, date, time, timedelta
-import cgi
 from google.appengine.api import users
-from google.appengine.ext import webapp
-from google.appengine.ext.webapp.util import run_wsgi_app
-from google.appengine.ext import db
 from google.appengine.api import mail
 from sosdata import UsersWaitingList2
 from sosdata import UserChoices
 from sosdata import UsersData
 from sosdata import InventoryList
 from sosdata import Item
-from sosdata import UserPO
 from soserrors import SOSException
 import sosdata
-import uuid
-from google.appengine.api import datastore_errors
+import sos_uuid as  uuid
 import logging
 import traceback
 import pprint
 from soscommon import AdminRootPage
-
 
 # user code
 class UserRootPage(AdminRootPage):
@@ -82,6 +72,14 @@ class UserRootPage(AdminRootPage):
     def new_choice(self, inv, i):
         # validate that a choice doesnt already exist this this 
         # item
+        uc = UserChoices(item=i, user=self.sos_user)
+        uc.date = inv.date
+        uc.quantity = "0"
+        uc.quantity_int = 0
+        uc.charge = "0.00"
+        uc.charge_float = 0.0
+        uc.purchased = 0
+        uc.id = str(uuid.uuid1())
         choice_query = UserChoices.all()
         choice_query.filter('item = ', i)
         choice_query.filter('user = ', self.sos_user)
@@ -92,18 +90,10 @@ class UserRootPage(AdminRootPage):
             # could return the found choice here, but i don't think any
             # should be found so i want to know when this happens
             return why_exist[0]
-        uc = UserChoices(item=i, user=self.sos_user)
-        uc.date = inv.date
-        uc.quantity = "0"
-        uc.quantity_int = 0
-        uc.charge = "0.00"
-        uc.charge_float = 0.0
-        uc.purchased = 0
-        uc.id = str(uuid.uuid1())
+
         uc.put()
         return uc
-
-
+    
     def get_user_choice(self, inv, items):
         choice_query = UserChoices.all()
         choice_query.filter('date = ', inv.date)
@@ -112,15 +102,16 @@ class UserRootPage(AdminRootPage):
         user_choices = choice_query.fetch(1000)
 
         # set them all up
+        kys = sorted(items.keys())
         if user_choices == None or len(user_choices) < 1:
             user_choices = []
-            for k in items.keys():
+            for k in kys:
                 i = items[k]
                 uc = self.new_choice(inv, i)
                 user_choices.append(uc)
         # update tmp_remaining
         else:
-            for k in items.keys():
+            for k in kys:
                 i = items[k]
                 found = False
                 for uc in user_choices:
@@ -143,6 +134,7 @@ class UserRootPage(AdminRootPage):
                     uc = self.new_choice(inv, i)
                     user_choices.append(uc)
 
+        user_choices = sorted(user_choices, key=lambda u: u.item.name)
         return user_choices
 
     def do_page(self, inv, user_choices, printable=False):
@@ -179,6 +171,7 @@ class UserRootPage(AdminRootPage):
             for j in range(0, len_a):
                 i = len_a - 1 - j
                 uc = f_ucs[i]
+
 
         tax_str = "%6.2f" % (round(tax, 2))
         sub_total_str = "%6.2f" % (round(sub_total, 2))
@@ -223,7 +216,7 @@ class UserRootPage(AdminRootPage):
                             raise SOSException("There are only %s %s remaining.  You request %s, which is more than we have." 
                                % (it.remaining, it.name, q))
 
-
+                check_choices = []
                 for c in choices:
                     q = self.request.get(c.item.id)
                     if q != None and q != "":
@@ -241,6 +234,10 @@ class UserRootPage(AdminRootPage):
                         if button_type == "Purchase":
                             c.purchased = 1
                             logging.info("user |%s| %d %s" % (self.email, c.quantity_int, it.name))
+                        if c.item.name in check_choices:
+                            logging.info("why is this choice already there?! ")
+                        else:
+                            check_choices.append(c.item.name)
                         c.put()
                 choices = self.get_user_choice(inv, items)
                 if button_type == "Printable":
@@ -249,7 +246,7 @@ class UserRootPage(AdminRootPage):
                     self.do_page(inv, choices)
         except Exception, ex:
             self.error_write(ex)
-            #raise
+            raise
 
     def get(self):
         try:
@@ -262,7 +259,7 @@ class UserRootPage(AdminRootPage):
                 self.do_page(inv, choices)
         except Exception, ex:
             self.error_write(ex)
-            #raise
+            raise
 
 
     def not_ready(self, msg):
@@ -400,4 +397,3 @@ class Register(AdminRootPage):
 
         except Exception, ex:
             self.error_write(ex)
-

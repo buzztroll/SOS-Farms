@@ -17,7 +17,6 @@ from sosdata import Item
 from sosdata import UserPO
 from soserrors import SOSException
 import sosdata
-import uuid
 from google.appengine.api import datastore_errors
 import logging
 import traceback

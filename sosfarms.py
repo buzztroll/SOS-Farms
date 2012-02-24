@@ -23,7 +23,7 @@ from soscommon import AdminRootPage
 from sosuserpages import UserRootPage
 from sosuserpages import WaitingList
 from sosuserpages import Register
-import uuid
+import sos_uuid as uuid
 from google.appengine.api import datastore_errors
 import logging
 import traceback
@@ -724,6 +724,32 @@ class Inventory(AdminRootPage):
             item.cost = old_item.cost
             item.put()
 
+class CleanChoices(AdminRootPage):
+
+    def get(self):
+        self.verify_admin()
+        c = self.request.get('date')
+        dt = datetime.strptime(c, "%Y-%M-%d")
+        q = UserChoices.all()
+        q.filter('date <', dt)
+        ucs = q.fetch(1000)
+
+        m  = """
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>special</title>
+</head>
+<body>OK %s
+        """ % (str(dt))
+        self.response.out.write(m)
+        db.delete(ucs)
+        for uc in ucs:
+            self.response.out.write(str(uc.date)  + " " + str(uc.id) + "<br>")
+#            uc.delete()
+        self.response.out.write("</body></html>")
+
 application = webapp.WSGIApplication(
                                      [('/', MainPage),
                                       ('/choices', UserRootPage),
@@ -734,6 +760,7 @@ application = webapp.WSGIApplication(
                                       ('/admin', Admin),
                                       ('/waiting', WaitingList),
                                       ('/sure', Sure),
+                                      ('/clean', CleanChoices),
                                       ('/register', Register)],
                                      debug=True)
 
